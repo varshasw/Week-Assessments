@@ -1,0 +1,184 @@
+Varsha S - 1033340
+
+Question-2
+
+using System;
+
+
+// Define the ISaveAccount interface
+interface ISaveAccount
+{
+    double CalculateSavingsInterest(double balance);
+}
+
+// Define the ICurrentAccount interface
+interface ICurrentAccount
+{
+    double CalculateCurrentInterest(double balance);
+}
+
+// Define the IGoldLoanAccount interface
+interface IGoldLoanAccount
+{
+    double CalculateGoldLoanInterest(double principal);
+}
+
+// Implement the BankAccount class which implements the interfaces
+class BankAccount : ISaveAccount, ICurrentAccount, IGoldLoanAccount
+{
+    public double CalculateSavingsInterest(double balance)
+    {
+        // Implement the savings interest calculation logic here
+        // For example, you can use a fixed interest rate
+        double interestRate = 0.03;
+        return balance * interestRate;
+    }
+
+    public double CalculateCurrentInterest(double balance)
+    {
+        // Implement the current interest calculation logic here
+        // For example, you can use a different fixed interest rate
+        double interestRate = 0.01;
+        return balance * interestRate;
+    }
+
+    public double CalculateGoldLoanInterest(double principal)
+    {
+        // Implement the gold loan interest calculation logic here
+        // For example, you can use a fixed interest rate
+        double interestRate = 0.05;
+        return principal * interestRate;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        BankAccount account = new BankAccount();
+
+        Console.WriteLine("Select an account type:");
+        Console.WriteLine("1. Savings Account");
+        Console.WriteLine("2. Current Account");
+        Console.WriteLine("3. Gold Loan Account");
+        int choice = int.Parse(Console.ReadLine());
+
+        double result = 0.0;
+        switch (choice)
+        {
+            case 1:
+                Console.WriteLine("Enter balance for Savings Account: ");
+                double savingsBalance = double.Parse(Console.ReadLine());
+                result = account.CalculateSavingsInterest(savingsBalance);
+                break;
+
+            case 2:
+                Console.WriteLine("Enter balance for Current Account: ");
+                double currentBalance = double.Parse(Console.ReadLine());
+                result = account.CalculateCurrentInterest(currentBalance);
+                break;
+
+            case 3:
+                Console.WriteLine("Enter principal for Gold Loan Account: ");
+                double principal = double.Parse(Console.ReadLine());
+                result = account.CalculateGoldLoanInterest(principal);
+                break;
+
+            default:
+                Console.WriteLine("Invalid choice.");
+                break;
+        }
+
+        Console.WriteLine("Interest calculated: " + result);
+    }
+}
+
+
+
+Question-3
+
+
+--DataBase Creation-->
+
+create table Customers
+(
+CustomerID int primary key not null,
+CustomerName varchar(100) not null,
+CustomerEmail varchar(100) not null,
+CustomerPhone varchar(15) not null,
+);
+go
+
+create table Flights 
+(
+FlightID int primary key not null,
+Airline varchar(100) not null,
+FlightNumber varchar(100) not null,
+DepartureAirport varchar(50) not null,
+ArrivalAirport varchar(50) not null,
+DepartureTime DateTime not null,
+ArrivalTime DateTime not null
+);
+go
+create table Reservations 
+(
+ReservationID int primary key not null,
+CustomerID int foreign key references Customers(CustomerID),
+FlightID int foreign key references Flights(FlightID),
+SeatNumber int not null,
+ReservationDate DateTime not null
+);
+go
+
+
+--appsetting--
+
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+    "AllowedHosts": "*",
+    "ConnectionStrings": {
+        "DBAirr": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;"
+    }
+}
+
+---program.cs--->
+
+using AirlinesDb.Data;
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<MyAirlines>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DBAirr") ?? throw new InvalidOperationException("Connection string 'DbFirstApproachContext' not found.")));
+
+
+
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+}
+
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.UseAuthorization();
+
+app.MapRazorPages();
+
+app.Run();
+
