@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+     
+    <nav>
+        <div class="landing"><h1>Movie Reviews</h1>
+            <div class="about"><a href="#">Home</a>
+                <a href="http://127.0.0.1:5500/about.html">About Us</a>
+                <a href="http://127.0.0.1:5500/contact.html">Contact Us</a>
+                
+            </div>
+            
+        </div>
+        </nav>
+
+    <h1 class="container-fluid p-3 ">CONTACT US</h1>
+    
+    <div class="con"><h2>Metacitric</h2>
+        <p>Welcome To Our Review Page</p>
+    </div>
+
+    
+    <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p>Phone: 987654321</p>
+        <p>Email: krry@example.com</p>
+        <p>Address: #33 kHB near TC Karnataka </p>
+    </div>
+
+    <div class="contact-form">
+        <fieldset>
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <input type="text" id="fullName" placeholder="Full Name">
+            <input type="email" id="email" placeholder="Email Address">
+            <input type="text" id="location" placeholder="Location (City or Country)">
+            <br>
+            <button type="submit" onclick="submitForm()">submit</button>
+        </form></fieldset>
+        
+    
+
+    <script>
+        function submitForm() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const location = document.getElementById('location').value;
+
+            const nameRegex = /^[a-zA-Z ]+$/;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!nameRegex.test(fullName)) {
+                alert('Please enter a valid Full Name (only letters, no special characters or numbers).');
+                return false;
+            }
+
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid Email Address.');
+                return false;
+            }
+
+            if (!location) {
+                alert('Please enter your Location.');
+                return false;
+            }
+
+            alert('Form submitted successfully!');
+            document.getElementById('contactForm').reset();
+        }
+    </script>
+
+    </div>
+
+    
+    
+     
+</body>
+</html>

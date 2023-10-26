@@ -1,0 +1,112 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    list-style:none;
+    font-family:'Poppins',sans-serif;
+}
+.heading{
+    display: flex;
+    background-color:brown;
+    padding: 40px 40px;
+    align-items: center;
+    font-size: 30px;
+    justify-content:space-around;
+    font-weight: 500;
+    
+}
+.about a{
+    text-decoration: none;
+    padding: 20px 20px;
+    justify-content:space-around;
+    letter-spacing: 2px;
+    font-style: normal;
+    font-size: 20px;
+}
+.about a:hover{
+    border-bottom:4px solid rgb(1, 1, 17);
+    transition: 4s;
+}
+.body{
+    width:100%;
+    height:90vh;
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    background-image: linear-gradient(rgba(0,0,0,0.50),rgba(0,0,0,0.50)),url("https://img.freepik.com/free-photo/movie-background-collage_23-2149876028.jpg");
+    background-position:center;
+    background-size:cover;
+}
+.head{
+    width: 30%;
+    text-align: center;
+    color: #fff;
+    margin: 10px;
+}
+.heading h1{
+    font-size: 40px;
+}
+
+.post{
+    width:70%;
+    display:flex;
+    justify-content:space-around;
+    height: 90%;
+}
+
+.movie{
+    display: inline;
+    text-align: center;
+    justify-content: space-around;
+    width: 250px;
+    height: 450px;
+    border-radius: 12px;
+}
+.movie h2{
+    color: red;
+    font-size: 35px;
+    letter-spacing: 2px;
+    border-radius: 10px;
+    padding: 30px 30px ;
+    background-color:black;
+    justify-content: space-around;
+}
+.movie h2:hover{
+    border-bottom:4px solid black;
+    transition: 4s;
+}
+.color{
+    color: #fff;
+}
+.nav{
+    margin-top: 20px;
+}
+.nav-link a{
+    margin-top: 20px;
+}
+.fot{
+    background-image: url(https://t4.ftcdn.net/jpg/02/16/47/65/360_F_216476556_TL9UD06arg8SsekLJXdx2UZasiPGEcaY.jpg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

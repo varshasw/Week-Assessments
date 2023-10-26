@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Contact Us  </title>
+    
+    
+    <link rel="stylesheet" href="contact.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="contact.js"></script>
+   </head>
+<body>
+    
+  <div class="container">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="topic">Address</div>
+          <div class="text-one">Kundalahalli, Bangalore</div>
+          <div class="text-two">Birendranagar 06</div>
+        </div>
+        <div class="phone details">
+          <i class="fas fa-phone-alt"></i>
+          <div class="topic">Phone</div>
+          <div class="text-one">+0098 9893 5647</div>
+          <div class="text-two">+0096 3434 5678</div>
+        </div>
+        <div class="email details">
+          <i class="fas fa-envelope"></i>
+          <div class="topic">Email</div>
+          <div class="text-one">movie@gmail.com</div>
+          <div class="text-two">info.moviereview@gmail.com</div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="topic-text">Company Name : Movie Reviews</div>
+        <p>We give a clear cut image of new relesed movies without any discrimination .Nothing personal.</p>
+      <form action="#">
+        <form id="contactForm" onsubmit="return validateForm(); showSuccessAlert();"></form>
+        <div class="input-box">
+            <input type="text" id="fullName" placeholder="Full Name">
+          </div>
+        <div class="input-box">
+          <input type="text" id="email" placeholder="E-mail Address">
+        </div>
+        <div class="input-box">
+          <input type="text" id="location" placeholder="Location (city or country)">
+        </div>
+        <div class="input-box message-box">
+          
+        </div>
+        
+        <div class="sub">
+          <button type="submit" onclick="submitForm()">submit</button>  
+         
+        </div>
+      </form>
+    </div>
+    </div>
+    
+
+  </div>
+  
+ 
+</body>
+</html>
+<script>
+  function submitForm() {
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const location = document.getElementById('location').value;
+
+      const nameRegex = /^[a-zA-Z ]+$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!nameRegex.test(fullName)) {
+          alert('Please enter a valid Full Name (only letters, no special characters or numbers).');
+          return false;
+      }
+
+      if (!emailRegex.test(email)) {
+          alert('Please enter a valid Email Address.');
+          return false;
+      }
+
+      if (!location) {
+          alert('Please enter your Location.');
+          return false;
+      }
+
+      alert('Form submitted successfully!');
+      document.getElementById('contactForm').reset();
+  }
+</script>
